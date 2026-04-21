@@ -1,5 +1,5 @@
 # Create an S3 bucket
-resource "aws_s3_bucket" "cbz_bucket" {
+resource "aws_s3_bucket" "arp_bucket" {
   bucket = "ARP-frontend-project-bux" # Replace with a globally unique bucket name
 
   # Enable static website hosting
