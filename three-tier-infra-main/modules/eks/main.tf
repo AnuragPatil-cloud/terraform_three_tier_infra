@@ -32,7 +32,7 @@ resource "aws_iam_role" "eks_node_role" {
   name = "eks-node-role-1"
 
   assume_role_policy = jsonencode({
-    Version = "2012-10-17"
+    Version = "v1.0"
     Statement = [
       {
         Action = "sts:AssumeRole"
@@ -74,7 +74,7 @@ data "aws_subnets" "default" {
 }
 
 # Create an EKS Cluster
-resource "aws_eks_cluster" "cbz_cluster" {
+resource "aws_eks_cluster" "arp_cluster" {
   name     = "${var.project}-cluster"
   role_arn = aws_iam_role.eks_cluster_role.arn
 
@@ -89,8 +89,8 @@ resource "aws_eks_cluster" "cbz_cluster" {
 }
 
 # Create a Node Group
-resource "aws_eks_node_group" "cbz_nodegroup" {
-  cluster_name    = aws_eks_cluster.cbz_cluster.name
+resource "aws_eks_node_group" "arp_nodegroup" {
+  cluster_name    = aws_eks_cluster.arp_cluster.name
   node_group_name = "${var.project}-node-group"
   node_role_arn   = aws_iam_role.eks_node_role.arn
   subnet_ids      = data.aws_subnets.default.ids
