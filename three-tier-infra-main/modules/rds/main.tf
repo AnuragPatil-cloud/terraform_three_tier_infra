@@ -37,7 +37,7 @@ resource "aws_security_group" "rds_sg" {
 }
 
 # Create an RDS MySQL Instance
-resource "aws_db_instance" "cbz_db_instance" {
+resource "aws_db_instance" "ARP_db_instance" {
   allocated_storage    = 20
   max_allocated_storage = 100
   engine               = "mysql"
